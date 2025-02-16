@@ -1,14 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import style from './Login.module.css'
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import *  as Yup from 'yup';
 import axios from 'axios';
+import { ClipLoader } from 'react-spinners';
+import { tokenContext } from '../../Context/TokenContext';
 
 export default function Login() {
 
   let [isCallingApi, setIsCallingApi] = useState(false);
   let [apiError, setApiError] = useState(null);
+  let {setToken} = useContext(tokenContext);
+
   let navigate = useNavigate();
 
   const initialValues = {
@@ -33,7 +37,9 @@ export default function Login() {
       let { data } = await axios.post(`https://ecommerce.routemisr.com/api/v1/auth/signin`, values);
       console.log(data);
       setIsCallingApi(false);
-      navigate("/home");
+      localStorage.setItem("Token",data.token);
+      setToken(data.token)
+      navigate("/");
     }
     catch (error) {
       console.log(error, "Error");
@@ -85,3 +91,4 @@ export default function Login() {
 
     </>)
 }
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjE5ODE5ZGJjNmZmMmY1NTkyM2IyMiIsIm5hbWUiOiJOT05PIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3Mzk2OTI4MjYsImV4cCI6MTc0NzQ2ODgyNn0.aq_DucWdQ3765qWHL5ic-UK8dzJ1XOqTskwYYLaFFss
