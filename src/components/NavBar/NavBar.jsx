@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import style from './NavBar.module.css'
 import logo from "../../assets/finalProject assets/images/freshcart-logo.svg"
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import Products from '../Products/Products'
 import Categories from '../Categories/Categories'
 import Brands from '../Brands/Brands'
@@ -13,11 +13,19 @@ import  { tokenContext } from '../../Context/TokenContext'
 
 export default function NavBar() {
   let {count} = useContext(counterContext);
-  let {token} = useContext(tokenContext)
+  let {token ,setToken} = useContext(tokenContext)
+  let navigate = useNavigate();
   console.log(token,"TokenNavBarrrrrrrrrrrrrrrrrrrr");
   
   console.log(count,"NONOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-  
+  function logOut(){
+    //- remove localStorage 
+    localStorage.removeItem("Token");
+    //- set Token null
+    setToken(null )
+    //- navigate login
+    navigate("/login")
+  }
   return (
     <>
     
@@ -71,7 +79,6 @@ export default function NavBar() {
             <div className="hidden w-full md:block  md:w-auto  absolute top-[80px] md:top-0 left-0 md:relative" id="navbar-default">
               {token? <ul className="font-medium absolute left-0 md:left-auto md:relative w-full md:w-auto flex flex-col items-center p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                 <li>
-                  {count}
                   <NavLink to={''} className="block py-2 px-3   rounded-sm    dark:text-white md:dark:text-blue-500" aria-current="page">Home</NavLink>
                 </li>
                 <li>
@@ -115,7 +122,7 @@ export default function NavBar() {
 
             <ul className='flex gap-3'>
               {token ? <li>
-                <NavLink to={'login'}>Sinout</NavLink>
+                <span onClick={logOut} className='cursor-pointer'>Sinout</span>
               </li> :<>
               <li>
                 <NavLink to={'register'}>Register</NavLink>
