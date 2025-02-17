@@ -14,6 +14,7 @@ import Logout from './components/Logout/Logout';
 import { tokenContext } from './Context/TokenContext'
 import ProtectedRoutes from './components/ProtectedRoutes/ProtectedRoutes';
 import AuthView from './components/AuthView/AuthView'
+import ProductDetails from './components/ProductDetails/ProductDetails'
 
 function App() {
   let { setToken } = useContext(tokenContext)
@@ -47,6 +48,12 @@ function App() {
           path: "product", element:
             <ProtectedRoutes>
               <Products />
+            </ProtectedRoutes>
+        },
+        {
+          path: "productDetails", element:
+            <ProtectedRoutes>
+              <ProductDetails />
             </ProtectedRoutes>
         },
         {
