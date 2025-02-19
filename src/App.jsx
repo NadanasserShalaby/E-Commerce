@@ -51,7 +51,7 @@ function App() {
             </ProtectedRoutes>
         },
         {
-          path: "productDetails/:id", element:
+          path: "productDetails/:id/:categoryId", element:
             <ProtectedRoutes>
               <ProductDetails />
             </ProtectedRoutes>
