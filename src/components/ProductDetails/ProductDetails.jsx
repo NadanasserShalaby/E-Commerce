@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import style from './ProductDetails.module.css'
 import { useParams } from 'react-router-dom'
+import axios from 'axios';
 export default function ProductDetails() {
   const [details, setDetailes] = useState(null);
   const { id } = useParams();
@@ -21,11 +22,21 @@ export default function ProductDetails() {
     getProductDetailes()
   }, [])
   return (
-    <div className="main-layout">
-      <div className='w-1/4'>
-        <img src="" alt="" />
+    <div className="main-layout items-center py-16">
+      <div className='w-4/12'>
+        <img src={details?.imageCover} alt="" />
       </div>
-      <div className='w-3/4'>
+      <div className='w-8/12'>
+        <h1>{details?.title}</h1>
+        <p>{details?.description} </p>
+        <span>{details?.category?.name}</span>
+        <div className="flex justify-between mb-4">
+          <p>{details?.price} EGP</p>
+          <p>
+            <i className='fa fa-star rating-color'></i>
+            {details?.ratingsAverage}</p>
+        </div>
+        <button className=' bg-main rounded-md w-full p-2 text-center text-white'>Add to Cart</button>
 
       </div>
     </div>

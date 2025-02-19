@@ -61,3 +61,8 @@ a , a:hover{
 {
     background-color: var(--light-color) !important;
 }
+.main-layout{
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+}
