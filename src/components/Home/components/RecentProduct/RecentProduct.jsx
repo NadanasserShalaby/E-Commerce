@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import style from './RecentProduct.module.css'
 import axios from 'axios'
 import ProductItem from '../../../Shared/ProductItem/ProductItem';
+import Loader from '../../../Shared/Loader/Loader';
 export default function RecentProduct() {
   let [product, setProduct] = useState([]);
   function getProduct() {
@@ -20,8 +21,14 @@ export default function RecentProduct() {
     getProduct()
   }, [])
   return (
-    <div className='flex flex-wrap gap-y-3 mv-8'>
-      {product.map(prod => <ProductItem product = {prod}/> )}
-    </div>
+    <>
+    {product.length != 0 && <div className='main-layout mb-8'>
+      
+      {product.map(prod => <ProductItem key = {product.id} product={prod} />) }
+
+    </div>}
+    {product.length == 0 && <Loader />}
+    </>
+
   )
 }

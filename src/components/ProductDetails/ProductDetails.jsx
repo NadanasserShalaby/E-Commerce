@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import RelatedProduct from './components/RelatedProduct/RelatedProduct';
 import Slider from 'react-slick';
+import Loader from '../Shared/Loader/Loader';
 export default function ProductDetails() {
   const [details, setDetailes] = useState(null);
   const { id, categoryId } = useParams();
@@ -32,7 +33,7 @@ export default function ProductDetails() {
   }, [id])
   return (
     <>
-      <div className="main-layout items-center py-16">
+    {details&&<div className="main-layout items-center py-16">
         <div className='w-4/12'>
           <Slider {...settings}>
 
@@ -52,7 +53,9 @@ export default function ProductDetails() {
           </div>
           <button className=' bg-main rounded-md w-full p-2 text-center text-white'>Add to Cart</button>
         </div>
-      </div>
+      </div>}
+    {!details && <Loader />}
+      
       <h2 className='text-4xl'>Related Product</h2>
       <RelatedProduct categoryId={categoryId} />
     </>
