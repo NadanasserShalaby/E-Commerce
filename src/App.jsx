@@ -15,6 +15,10 @@ import { tokenContext } from './Context/TokenContext'
 import ProtectedRoutes from './components/ProtectedRoutes/ProtectedRoutes';
 import AuthView from './components/AuthView/AuthView'
 import ProductDetails from './components/ProductDetails/ProductDetails'
+import { ToastContainer } from 'react-toastify'
+import Checkout from './components/Checkout/Checkout';
+import Allorders from './components/Allorders/Allorders'
+import WishList from './components/WishList/WishList';
 
 function App() {
   let { setToken } = useContext(tokenContext)
@@ -57,7 +61,7 @@ function App() {
             </ProtectedRoutes>
         },
         {
-          path: "card", element:
+          path: "cart", element:
             <ProtectedRoutes>
               <Card />
             </ProtectedRoutes>
@@ -74,6 +78,24 @@ function App() {
               <Categories />
             </ProtectedRoutes>
         },
+        {
+          path: "checkout", element:
+            <ProtectedRoutes>
+              <Checkout />
+            </ProtectedRoutes>
+        },
+        {
+          path: "wishList", element:
+            <ProtectedRoutes>
+              <WishList />
+            </ProtectedRoutes>
+        },
+        {
+          path: "allorders", element:
+            <ProtectedRoutes>
+              <Allorders />
+            </ProtectedRoutes>
+        },
         { path: "logout", element: <Logout /> },
         { path: "*", element: <NotFound /> },
 
@@ -83,6 +105,7 @@ function App() {
   return (
     <>
       <RouterProvider router={routers} />
+      <ToastContainer />
     </>
   )
 }

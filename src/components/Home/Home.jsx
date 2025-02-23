@@ -6,12 +6,12 @@ import StaticSlider from './components/StaticSlider/StaticSlider'
 export default function Home() {
   return (
     <>
-    {/* <div className='p-10'> */}
+    <div className='container mx-auto px-5 py-10'>
 
       <StaticSlider />
       <PopularCategories />
       <RecentProduct />
-    {/* </div> */}
+    </div>
     </>
   )
 }

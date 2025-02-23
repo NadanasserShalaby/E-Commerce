@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 .active{
-    background-color:#0AAD0A ;
-    padding:5px 15px;
-    color: white;
+    color: green;
+    text-align: center;
+    font-weight: bold;
 }
 /* @import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap'); */
 :root

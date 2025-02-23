@@ -1,8 +1,9 @@
-import React from 'react'
-import style from './ProductItem.module.css'
+import React from 'react';
 import { Link } from 'react-router-dom';
+
 export default function ProductItem(props) {
-  let { imageCover, title, category, price, ratingsAverage,id } = props.product
+  let { imageCover, title, category, price, ratingsAverage, id } = props.product;
+
   return (
     <div className='w-100 px-2 mb-3 md:w-1/3 lg:w-1/6 sm:w-1/2'>
       <div className="product">
@@ -14,12 +15,18 @@ export default function ProductItem(props) {
             <p>{price} EGP</p>
             <p>
               <i className='fa fa-star rating-color'></i>
-              {ratingsAverage}</p>
+              {ratingsAverage}
+            </p>
           </div>
         </Link>
-        <button className='btn bg-main rounded-md w-full p-2 text-center text-white'>Add to Cart</button>
+        <button
+          onClick={() => props.addProductToCart(id)}
+          className='btn bg-main rounded-md w-full p-2 text-center text-white'
+          disabled={props.loading} // Disable button while loading
+        >
+          {props.loading ? <span>Loading...</span> : <span>Add to Cart</span>}
+        </button>
       </div>
     </div>
-
-  )
+  );
 }

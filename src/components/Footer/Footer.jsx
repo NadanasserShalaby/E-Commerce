@@ -1,29 +1,60 @@
-import React from 'react'
-import style from './Footer.module.css'
+import React from "react";
+
 export default function Footer() {
   return (
-    <>
-      <footer className='text-[#d1d5db]  bg-[rgb(242,242,242)]  bottom-0 p-6'>
-        <div className="container mx-auto  w-full ">
-          <h2 className='text-3xl text-[#212529]'>Get the freshCart App</h2>
-          <p className='text-[#6d767e] font-light'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, reiciendis et quis rem animi vero in dolores! Aliquam, sed veniam delectus magnam cupiditate ipsum quos repellat inventore ullam maxime eum.</p>
-          <div className="flex gap-2">
-          <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="john.doe@company.com" required />
-          <button className='bg-[#0AAD0A] text-white rounded-md'>Share App Link</button>
+    <footer className="bg-gray-900 text-gray-300 py-10">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 px-6">
+
+        {/* Column 1 - Branding & Description */}
+        <div>
+          <h2 className="text-2xl font-bold text-white">FreshCart</h2>
+          <p className="text-gray-400 mt-2">
+            Your one-stop shop for fresh groceries. Order now and get your essentials delivered fast!
+          </p>
+        </div>
+
+        {/* Column 2 - Quick Links */}
+        <div>
+          <h3 className="text-xl font-semibold text-white">Quick Links</h3>
+          <ul className="mt-3 space-y-2">
+            <li className="hover:text-green-400 cursor-pointer">About Us</li>
+            <li className="hover:text-green-400 cursor-pointer">Contact</li>
+            <li className="hover:text-green-400 cursor-pointer">Privacy Policy</li>
+            <li className="hover:text-green-400 cursor-pointer">Terms of Service</li>
+          </ul>
+        </div>
+
+        {/* Column 3 - Contact & Social Media */}
+        <div>
+          <h3 className="text-xl font-semibold text-white">Stay Connected</h3>
+          
+          {/* Email Input */}
+          <div className="flex mt-3">
+            <input 
+              type="email" 
+              className="w-full p-2 rounded-l-md bg-gray-800 border border-gray-600 focus:ring-2 focus:ring-green-400 outline-none text-white" 
+              placeholder="Enter your email"
+            />
+            <button className="bg-green-500 px-4 py-2 rounded-r-md text-white hover:bg-green-600 transition">
+              Subscribe
+            </button>
           </div>
 
-
-        <div className="partner flex justify-between">
-          <div className="payment">
-            <p>Payment partners</p>
-          </div>
-          <div className="app">
-            <p>get with FreshCart</p>
+          {/* Social Media Icons */}
+          <div className="flex gap-4 mt-4">
+            <i className="fab fa-facebook-f text-xl hover:text-green-400 cursor-pointer"></i>
+            <i className="fab fa-twitter text-xl hover:text-green-400 cursor-pointer"></i>
+            <i className="fab fa-instagram text-xl hover:text-green-400 cursor-pointer"></i>
+            <i className="fab fa-linkedin-in text-xl hover:text-green-400 cursor-pointer"></i>
           </div>
         </div>
 
-        </div>
-      </footer>
-    </>
-  )
+      </div>
+
+      {/* Copyright Section */}
+      <div className="text-center text-gray-500 text-sm mt-6 border-t border-gray-700 pt-4">
+        © {new Date().getFullYear()} FreshCart. All Rights Reserved.
+      </div>
+    </footer>
+  );
 }

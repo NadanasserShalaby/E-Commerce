@@ -9,12 +9,15 @@ import "slick-carousel/slick/slick-theme.css";
 import 'flowbite/dist/flowbite.min.js'
 import CounterContextProvider from './Context/CounterContext.jsx'
 import TokenContextProvider from './Context/TokenContext.jsx'
+import CartContextProvider from './Context/CartContext.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <TokenContextProvider>
-      <CounterContextProvider>
-        <App />
-      </CounterContextProvider>
+      <CartContextProvider>
+        <CounterContextProvider>
+          <App />
+        </CounterContextProvider>
+      </CartContextProvider>
     </TokenContextProvider>
   </StrictMode>,
 )

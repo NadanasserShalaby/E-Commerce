@@ -1,15 +1,12 @@
 import React, { useContext } from 'react'
 import style from './Products.module.css'
 import { counterContext } from '../../Context/CounterContext'
+import RecentProduct from '../Home/components/RecentProduct/RecentProduct';
 export default function Products() {
-  let { setCount } = useContext(counterContext)
-  function changeCount() {
-    setCount(Math.random() * 100);
-  }
+  
   return (
-    <div>
-
-      <button onClick={changeCount} className='bg-orange-400 p-3'>Click me </button>
+    <div className='my-10 mt-20 p-5'>
+      <RecentProduct />
     </div>
   )
 }
