@@ -50,6 +50,7 @@ let {cashOnDelievry ,onlinePayment} = useContext(cartContext)
 
   return (
     <>
+<div className='my-[150px] p-5'>
 
       <form onSubmit={formik.handleSubmit} className="w-1/2 mx-auto my-6">
         <h1 className='text-4xl text-gray-600  mb-7'>Shipping Info: </h1>
@@ -102,6 +103,7 @@ let {cashOnDelievry ,onlinePayment} = useContext(cartContext)
         }
 
       </form>
+</div>
 
     </>)
 }

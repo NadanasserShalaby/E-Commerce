@@ -21,10 +21,10 @@ export default function Card() {
       let result = await removeProduct(id);
       setLoadingId(null);
 
-      if (result.success) {
-        toast.error("Failed to remove item. Try again!", { position: "top-right", autoClose: 2000 });
-      } else {
+      if (!result.success) {
         toast.success("Item removed successfully!", { position: "top-right", autoClose: 2000 });
+      } else {
+        toast.error("Failed to remove item. Try again!", { position: "top-right", autoClose: 2000 });
       }
     }
   }
@@ -41,8 +41,7 @@ export default function Card() {
   }
 
   if (!cartDetails.data || cartDetails.data.products.length === 0) {
-    
-    return <h1 className="text-center text-3xl   mt-80  p-5">🛒 Your Cart is Empty!</h1>;
+    return <h1 className="text-center text-3xl mt-80 p-5">🛒 Your Cart is Empty!</h1>;
   }
 
   return (
@@ -50,10 +49,10 @@ export default function Card() {
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-2xl font-semibold">
-          total price: <span className="text-green-600">{cartDetails.data.totalCartPrice} EGP</span>
+          Total Price: <span className="text-green-600">{cartDetails.data.totalCartPrice} EGP</span>
         </h2>
         <h2 className="text-2xl font-semibold">
-          total number of items: <span className="text-green-600">{cartDetails.numOfCartItems}</span>
+          Total Items: <span className="text-green-600">{cartDetails.numOfCartItems}</span>
         </h2>
       </div>
 

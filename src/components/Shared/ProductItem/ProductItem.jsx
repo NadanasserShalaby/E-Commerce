@@ -1,30 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
-export default function ProductItem(props) {
-  let { imageCover, title, category, price, ratingsAverage, id } = props.product;
+export default function ProductItem({ product, addProductToCart, loading }) {
+  const { imageCover, title, category, price, ratingsAverage, id } = product;
 
   return (
-    <div className='w-100 px-2 mb-3 md:w-1/3 lg:w-1/6 sm:w-1/2'>
-      <div className="product">
-        <Link to={`/productDetails/${id}/${category._id}`}>
-          <img src={imageCover} className='mb-2' alt="" />
-          <span className='text-main'>{category.name}</span>
-          <h2 className='mb-4'>{title.split(" ").splice(0, 2).join(" ")}</h2>
-          <div className="flex justify-between mb-4">
-            <p>{price} EGP</p>
-            <p>
-              <i className='fa fa-star rating-color'></i>
+    <div className='w-full px-2 mb-5 md:w-1/3 lg:w-1/4 sm:w-1/2'>
+      <div className="bg-white rounded-lg shadow-md p-4  transition-all duration-300  transform hover:scale-105">
+        <Link to={`/productDetails/${id}/${category._id}`} className="block">
+          <div className="w-full h-48 rounded-lg overflow-hidden">
+            <img src={imageCover} className="w-full h-full object-cover" alt={title} />
+          </div>
+          <span className='text-sm font-semibold text-green-600 bg-green-100 px-2 py-1 rounded-full inline-block mt-2'>{category.name}</span>
+          <h2 className='text-lg font-semibold mt-2 text-gray-800'>{title.split(" ").splice(0, 2).join(" ")}</h2>
+          <div className="flex justify-between items-center my-2 text-gray-700">
+            <p className="text-xl font-bold">{price} EGP</p>
+            <p className="flex items-center text-yellow-500 font-semibold">
+              <i className='fa fa-star mr-1'></i>
               {ratingsAverage}
             </p>
           </div>
         </Link>
         <button
-          onClick={() => props.addProductToCart(id)}
-          className='btn bg-main rounded-md w-full p-2 text-center text-white'
-          disabled={props.loading} // Disable button while loading
+          onClick={() => addProductToCart(id)}
+          className={`mt-3 w-full p-3 rounded-md text-white text-lg flex items-center justify-center transition ${
+            loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-600 hover:bg-green-700  transition-all duration-300 '
+          }`}
+          disabled={loading}
         >
-          {props.loading ? <span>Loading...</span> : <span>Add to Cart</span>}
+          {loading ? <AiOutlineLoading3Quarters className="animate-spin mr-2" /> : "Add to Cart"}
         </button>
       </div>
     </div>

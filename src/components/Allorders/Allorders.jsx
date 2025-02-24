@@ -31,7 +31,7 @@ export default function Allorders() {
   return (
     <>
       <div className='my-10 mt-20 p-5'>
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg my-5">
+        <div className="min-h-screen relative overflow-x-auto shadow-md sm:rounded-lg my-5">
           <table className="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
@@ -60,7 +60,11 @@ export default function Allorders() {
                 </tr>
               ))}
             </tbody>
-            ):<Loader/>}
+            ):(
+              <div className="flex items-center justify-center p-10">
+                <p className="text-lg font-semibold text-gray-600">No orders found. Place an order!</p>
+              </div>
+            )}
             
           </table>
         </div>
