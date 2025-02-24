@@ -81,8 +81,6 @@ export default function CartContextProvider({ children }) {
         // }
         return data
     }
-
-
     async function getUserOrder(userId) {
         const { data } = await axios.get(`${Order_URL}/user/${userId}`);
         // if(data.status == "success"){

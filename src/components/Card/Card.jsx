@@ -8,12 +8,12 @@ import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Card() {
-  const { cartDetails, removeProduct, updateCount } = useContext(cartContext);
+  const { cartDetails, removeProduct, updateCount, getCart } = useContext(cartContext);
   const [loadingId, setLoadingId] = useState(null);
 
   useEffect(() => {
-    console.log(cartDetails);
-  }, [cartDetails]);
+    getCart(); // Fetch cart on component mount
+  }, []);
 
   async function deleteProduct(id) {
     if (window.confirm("Are you sure you want to remove this item?")) {
@@ -21,8 +21,9 @@ export default function Card() {
       let result = await removeProduct(id);
       setLoadingId(null);
 
-      if (!result.success) {
+      if (result.success) {
         toast.success("Item removed successfully!", { position: "top-right", autoClose: 2000 });
+        getCart(); // Fetch updated cart
       } else {
         toast.error("Failed to remove item. Try again!", { position: "top-right", autoClose: 2000 });
       }
@@ -34,6 +35,7 @@ export default function Card() {
     setLoadingId(id);
     await updateCount(id, count);
     setLoadingId(null);
+    getCart(); // Fetch updated cart after quantity change
   }
 
   if (!cartDetails) {
@@ -49,10 +51,10 @@ export default function Card() {
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-2xl font-semibold">
-          Total Price: <span className="text-green-600">{cartDetails.data.totalCartPrice} EGP</span>
+          Total Items: <span className="text-green-600">{cartDetails.numOfCartItems}</span>
         </h2>
         <h2 className="text-2xl font-semibold">
-          Total Items: <span className="text-green-600">{cartDetails.numOfCartItems}</span>
+          Total Price: <span className="text-green-600">{cartDetails.data.totalCartPrice} EGP</span>
         </h2>
       </div>
 

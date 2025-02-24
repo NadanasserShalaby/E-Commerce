@@ -19,6 +19,7 @@ import { ToastContainer } from 'react-toastify'
 import Checkout from './components/Checkout/Checkout';
 import Allorders from './components/Allorders/Allorders'
 import WishList from './components/WishList/WishList';
+import ForgetPassWord from './components/ForgetPassWord/ForgetPassWord';
 
 function App() {
   let { setToken } = useContext(tokenContext)
@@ -46,6 +47,12 @@ function App() {
           path: "register", element:
             <AuthView>
               <Register />
+            </AuthView>
+        },
+        {
+          path: "forgetpassword", element:
+            <AuthView>
+              <ForgetPassWord />
             </AuthView>
         },
         {

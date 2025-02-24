@@ -32,7 +32,7 @@ export default function NavBar() {
           {token && (
             <ul className="flex space-x-6 text-gray-900 dark:text-white font-medium">
               <li><NavLink to="" className="hover:text-green-700 transition-all duration-300">Home</NavLink></li>
-              <li><NavLink to="cart" className="hover:text-green-700 transition-all duration-300">Cart ({numOfCartItems})</NavLink></li>
+              <li><NavLink to="cart" className="hover:text-green-700 transition-all duration-300">Cart</NavLink></li>
               <li><NavLink to="wishList" className="hover:text-green-700 transition-all duration-300">Wish List</NavLink></li>
               <li><NavLink to="product" className="hover:text-green-700 transition-all duration-300">Products</NavLink></li>
               <li><NavLink to="categories" className="hover:text-green-700 transition-all duration-300">Categories</NavLink></li>
